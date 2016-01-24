@@ -42,8 +42,8 @@ namespace Algorytm_wieżowy
 
         private void TowerAlgorithm(int i)
         {
-            tower[i] = new Tower();
-            tower[i].Learn();
+            //tower[i] = new Tower();
+            //tower[i].Learn();
         }
 
         private void LoadTests()

@@ -44,7 +44,7 @@ namespace Algorytm_wieżowy
         {
             Array.Copy(Weights.weights, Pocket.weights, Weights.weights.Length);
             Weights.LifeTime = Pocket.LifeTime;
-            Pocket
+            //Pocket
         }
 
         //public void Learn(Sample sample)
