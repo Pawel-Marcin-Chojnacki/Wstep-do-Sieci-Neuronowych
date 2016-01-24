@@ -20,17 +20,19 @@ namespace Algorytm_wieżowy
         public bool IsSamplePositive = false;
         public double Error { get; set; }
         public double O { get; set; }
-        //public List<Sample> Samples; 
-
+        public List<Sample> Samples;
+        public Random Rnd = new Random();
         public Perceptron(int number, int size)
         {
             Id = number;
             Size = size;
             Weights = new Weights(Size);
             Pocket = new Weights(Size);
-            Threshold = 0;
+            Pocket = Weights;
+            Threshold = Rnd.NextDouble()/1000;
             Error = 0;
             O = 0;
+
         }
 
         public void UpdateThreshold(double error)
@@ -38,11 +40,24 @@ namespace Algorytm_wieżowy
             Threshold = Threshold - LearningRate * error;
         }
 
-        public void Learn(Sample sample)
+        public void SwapPocket()
         {
-            O = 0;
-
+            Array.Copy(Weights.weights, Pocket.weights, Weights.weights.Length);
+            Weights.LifeTime = Pocket.LifeTime;
+            Pocket
         }
+
+        //public void Learn(Sample sample)
+        //{
+            //O = 0;
+            //Error = 0;
+            //for (int i = 0; i < sample.Cells.Length; ++i)
+            //{
+            //    O = O + sample.Cells[i]*Weights.weights[i];
+            //}
+            //O
+
+        //}
 
     }
 

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Algorytm_wieżowy
+﻿namespace Algorytm_wieżowy
 {
-    class Sample
+    internal class Sample
     {
+        public int[] Cells = new int[Globals.GridSize];
+        public string Digit;
     }
 }
