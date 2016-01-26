@@ -5,8 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Robot_hand"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="600" Width="600">
+    <Window.DataContext>
+        <local:ViewModel></local:ViewModel>
+    </Window.DataContext>
     <Grid>
-        
+        <Border BorderBrush="Navy"  BorderThickness="2"
+                Height="{Binding BorderHeight}"
+                Width="{Binding BorderWidth}">
+            <Canvas MouseMove="Canvas_MouseMove" Background="Aqua">
+                <Line StrokeThickness="5" Stroke="CadetBlue"
+                      X1="{Binding PoczatekRamienia.X}"
+                      X2="{Binding Lokiec.X, Mode=TwoWay}"
+                      Y1="{Binding PoczatekRamienia.Y}"
+                      Y2="{Binding Lokiec.Y, Mode=TwoWay}">
+                </Line>
+                <Line StrokeThickness="5" Stroke="DarkSlateBlue"
+                      X1="{Binding Lokiec.X, Mode=TwoWay}"
+                      Y1="{Binding Lokiec.Y, Mode=TwoWay}"
+                      X2="{Binding Dlon.X, Mode=TwoWay}"
+                      Y2="{Binding Dlon.Y, Mode=TwoWay}">
+                </Line>
+            </Canvas>
+        </Border>
     </Grid>
 </Window>

@@ -20,9 +20,39 @@ namespace Robot_hand
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        AlgorytmWPB algorytmWpb;
+        ViewModel vm;
+        Point previousPoint;
         public MainWindow()
         {
             InitializeComponent();
+            vm = this.DataContext as ViewModel;
+            algorytmWpb = new AlgorytmWPB();
+            algorytmWpb.InitLayers();
+            algorytmWpb.GenerujKaty();
+            algorytmWpb.Teach();
+            //MouseMove += OnMouseMove;
+        }
+
+        private void OnMouseMove(object sender, MouseEventArgs mouseEventArgs)
+        {
+       
+        }
+
+        private void ruszReke(Point punkt)
+        {
+            Robot ręka = algorytmWpb.DajOdpowiedź(punkt);
+            vm.Lokiec = ręka.Elbow;
+            vm.Dlon = ręka.Palm;
+        }
+
+        private void Canvas_MouseMove(object sender, MouseEventArgs e)
+        {
+            var punkt = Mouse.GetPosition((Canvas)sender);
+            //if (punkt.X >= 0 && punkt.X <= Globals.Width &&
+                //punkt.Y >= 0 && punkt.Y <= Globals.Height)
+                ruszReke(punkt);
         }
     }
 }
