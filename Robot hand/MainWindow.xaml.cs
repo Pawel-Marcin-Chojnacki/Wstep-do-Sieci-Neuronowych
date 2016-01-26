@@ -21,38 +21,32 @@ namespace Robot_hand
     public partial class MainWindow : Window
     {
 
-        AlgorytmWPB algorytmWpb;
-        ViewModel vm;
-        Point previousPoint;
+        AlgorithmWPB _algorithmWPB;
+        private ViewModel _vm;
+        //Point previousPoint;
         public MainWindow()
         {
             InitializeComponent();
-            vm = this.DataContext as ViewModel;
-            algorytmWpb = new AlgorytmWPB();
-            algorytmWpb.InitLayers();
-            algorytmWpb.GenerujKaty();
-            algorytmWpb.Teach();
-            //MouseMove += OnMouseMove;
+            _vm = this.DataContext as ViewModel;
+            _algorithmWPB = new AlgorithmWPB();
+            _algorithmWPB.InitLayers();
+            _algorithmWPB.InitializeExamples();
+            _algorithmWPB.Teach();
         }
 
-        private void OnMouseMove(object sender, MouseEventArgs mouseEventArgs)
+        private void MoveArm(Point punkt)
         {
-       
-        }
-
-        private void ruszReke(Point punkt)
-        {
-            Robot ręka = algorytmWpb.DajOdpowiedź(punkt);
-            vm.Lokiec = ręka.Elbow;
-            vm.Dlon = ręka.Palm;
+            Robot arm = _algorithmWPB.GetArmPosition(punkt);
+            _vm.Elbow = arm.Elbow;
+            _vm.Palm = arm.Palm;
         }
 
         private void Canvas_MouseMove(object sender, MouseEventArgs e)
         {
-            var punkt = Mouse.GetPosition((Canvas)sender);
-            //if (punkt.X >= 0 && punkt.X <= Globals.Width &&
-                //punkt.Y >= 0 && punkt.Y <= Globals.Height)
-                ruszReke(punkt);
+            var point = Mouse.GetPosition((Canvas)sender);
+            if (point.X >= 0 && point.X <= Globals.Width &&
+            point.Y >= 0 && point.Y <= Globals.Height)
+                MoveArm(point);
         }
     }
 }

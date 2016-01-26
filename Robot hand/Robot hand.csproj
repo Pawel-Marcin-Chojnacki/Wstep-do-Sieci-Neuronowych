@@ -55,10 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AlgorytmWPB.cs" />
+    <Compile Include="AlgorithmWPB.cs" />
     <Compile Include="Angles.cs" />
     <Compile Include="LearningExample.cs" />
-    <Compile Include="JednostkaUczaca.cs" />
+    <Compile Include="LearningUnit.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Robot.cs" />
     <Compile Include="ViewModel.cs" />

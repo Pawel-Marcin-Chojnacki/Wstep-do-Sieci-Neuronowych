@@ -7,29 +7,29 @@ namespace Robot_hand
 {
     class ViewModel : INotifyPropertyChanged
     {
-        private Point _lokiec = new Point(Globals.ArmLength, Globals.ArmStartingPoint.Y);
-        private Point _dlon = new Point(Globals.ArmLength*2, Globals.ArmStartingPoint.Y);
-        public Point PoczatekRamienia => Globals.ArmStartingPoint;
+        private Point _elbow = new Point(Globals.ArmLength, Globals.ArmStartingPoint.Y);
+        private Point _palm = new Point(Globals.ArmLength*2, Globals.ArmStartingPoint.Y);
+        public Point Shoulder => Globals.ArmStartingPoint;
         public int BorderHeight => Globals.Height;
         public int BorderWidth => Globals.Width;
 
-        public Point Lokiec
+        public Point Elbow
         {
-            get { return _lokiec; }
+            get { return _elbow; }
             set
             {
-                _lokiec = value;
-                NotifyPropertyChanged("Lokiec");
+                _elbow = value;
+                NotifyPropertyChanged("Elbow");
             }
         }
 
-        public Point Dlon
+        public Point Palm
         {
-            get { return _dlon;}
+            get { return _palm;}
             set
             {
-                _dlon = value;
-                NotifyPropertyChanged("Dlon");
+                _palm = value;
+                NotifyPropertyChanged("Palm");
             }
         }
 
