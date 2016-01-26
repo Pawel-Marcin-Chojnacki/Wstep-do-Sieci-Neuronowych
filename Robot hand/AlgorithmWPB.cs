@@ -97,8 +97,6 @@ namespace Robot_hand
                     _layers[i][j].HiddenLayerDelta(sum);
                 }   
             }
-
-
         }
 
         private double SumOfDeltaK(int k, int j)
